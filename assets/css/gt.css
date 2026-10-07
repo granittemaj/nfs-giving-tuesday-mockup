@@ -128,10 +128,18 @@
 .gt-guide .ex-keepgrid .ex-mc .nfs-cover{position:absolute;inset:0}
 
 /* ---------------- The Gift of Giving page ---------------- */
-.gt-giftpage .exa-hero h1{max-width:13ch;text-wrap:balance}
-.gt-steps{border-top:0;padding-top:clamp(28px,4vw,44px)}
-.gt-steps .grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1040px;margin-inline:auto}
+.gt-gifthero h1{max-width:14ch;text-wrap:balance}
+.gt-gifthero h1 em{font-style:italic;color:var(--nfs)}
+.gt-lede{font-size:clamp(17px,2vw,21px);line-height:1.55;color:var(--ink-2);max-width:56ch;margin-top:22px}
+.gt-steps{border-top:0;padding-top:clamp(20px,3vw,32px)}
+.gt-steps .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:760px){.gt-steps .grid{grid-template-columns:minmax(0,1fr)}}
-.gt-giftact{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.gt-giftact{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 .gt-giftact .btn{margin:0;padding:0 34px;min-height:54px;font-size:18px}
-.gt-giftact .gt-note{max-width:46ch}
+.gt-giftact .gt-note{max-width:52ch}
+.gt-giftpage .ex-allwrap{text-align:left}
+
+/* Donate note: the theme's modal, used where GoFundMe will not load its checkout (this mockup) */
+#gtDonate .nfs-modal{max-width:500px}
+#gtDonate .kicker{margin-bottom:14px}
+#gtDonate .btn{margin-top:4px}

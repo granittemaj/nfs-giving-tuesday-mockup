@@ -6,12 +6,14 @@
 var LIVE='https://wearenotforsale.org', base=window.GT_BASE||'';
 function perFrame(fn){var q=false;return function(){if(q)return;q=true;requestAnimationFrame(function(){q=false;fn();});};}
 
-// Header, menu and footer links are written as site paths (/donate/, /projects/): send them to
-// the live site, and the logo to the hub.
+// Header, menu and footer links are written as site paths (/donate/, /projects/): Donate opens
+// the checkout modal, the logo goes to the hub, the rest go to the live site.
 document.querySelectorAll('#hdr a[href], #mobileMenu a[href], .nl a[href], footer a[href]').forEach(function(a){
   var h=a.getAttribute('href');
+  if(window.GT_DONATE&&/^https:\/\/wearenotforsale\.org\/donate\/?$/.test(h)){a.setAttribute('href',window.GT_DONATE);return;}
   if(!h||h.charAt(0)!=='/'||h.charAt(1)==='/')return;
   if(a.classList.contains('brand')&&h==='/'){a.setAttribute('href',base);return;}
+  if(/^\/donate\/?$/.test(h)){a.setAttribute('href',window.GT_DONATE||LIVE+h);return;}
   a.setAttribute('href',LIVE+h);
 });
 
@@ -70,6 +72,39 @@ chips.forEach(function(c){c.addEventListener('click',function(){
   cards.forEach(function(k){var ok=g==='all'||k.getAttribute('data-group')===g;k.classList.toggle('exa-hide',!ok);if(ok)n++;});
   if(shown)shown.textContent=n;
 });});
+
+// Donate. Where GoFundMe allows its checkout (wearenotforsale.org), its script opens the checkout
+// modal (config.js). Anywhere else, this mockup included, GoFundMe refuses to load the form, so a
+// Donate click opens the theme's modal with a note and a way to the real checkout instead.
+if(!window.GT_SDK){
+  var sc=null, opener=null;
+  var buildNote=function(){
+    sc=document.createElement('div');sc.className='nfs-modal-scrim';sc.id='gtDonate';
+    sc.innerHTML='<div class="nfs-modal" role="dialog" aria-modal="true" aria-labelledby="gtDonateT">'+
+      '<button type="button" class="x" aria-label="Close">&times;</button>'+
+      '<div class="kicker"><span class="dash"></span>Donate</div>'+
+      '<h3 id="gtDonateT">The donation checkout opens here</h3>'+
+      '<p class="sub">On wearenotforsale.org, this button opens the GoFundMe Pro checkout in a window like this one, without leaving the page. GoFundMe only allows its checkout on wearenotforsale.org, so it cannot load inside this mockup.</p>'+
+      '<a class="btn btn-orange" href="'+LIVE+'/'+(window.GT_DONATE||'')+'" target="_blank" rel="noopener">Open the checkout on wearenotforsale.org</a></div>';
+    document.body.appendChild(sc);
+    sc.addEventListener('click',function(e){if(e.target===sc||e.target.closest('.x'))closeNote();});
+    sc.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){closeNote();return;}
+      if(e.key!=='Tab')return;
+      var f=sc.querySelectorAll('button,a[href]'),first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    });
+  };
+  var openNote=function(){if(!sc)buildNote();opener=document.activeElement;sc.classList.add('open');document.body.classList.add('lock');setTimeout(function(){sc.querySelector('.x').focus();},60);};
+  var closeNote=function(){sc.classList.remove('open');document.body.classList.remove('lock');if(opener&&opener.focus)opener.focus();};
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="campaign="]');
+    if(!a||(sc&&sc.contains(a)))return;
+    e.preventDefault();openNote();
+  });
+  if(/[?&]campaign=/.test(location.search))openNote();
+}
 
 // Hub: days until Giving Tuesday (the build date's figure is printed in the HTML)
 var dEl=document.querySelector('[data-gt-days]');
