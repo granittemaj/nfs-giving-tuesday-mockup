@@ -1,0 +1,137 @@
+/* =========================================================================
+   Giving Tuesday mockup: only what the theme has no component for.
+   Everything else on these pages is the papingu theme's own styles.css
+   (Learn explainer: ex-*, Learn index: exa-*, nfs-exfaq, ctaband, kicker, btn).
+   Theme tokens only: --nfs, --nfs-d, --ink, --ink-2, --paper, --muted, --line,
+   --band, --disp, --body, --ease, --navh, --sec, --gap, and --accent per guide.
+   ========================================================================= */
+
+/* What WordPress adds around the block template parts on the live site */
+:where(.wp-site-blocks)>*{margin-block-start:24px;margin-block-end:0}
+:where(.wp-site-blocks)>:first-child{margin-block-start:0}
+/* The consent bar belongs to the live site's analytics; the mockup has none */
+.cookiebar,#cprefs,#cprefs-scrim{display:none!important}
+
+/* Mockup marker */
+.gt-mock{position:fixed;left:clamp(12px,2vw,20px);bottom:clamp(12px,2vw,20px);z-index:55;margin:0;padding:7px 14px;border-radius:40px;background:var(--ink);color:var(--paper);font-size:12.5px;letter-spacing:.02em;box-shadow:0 8px 24px rgba(20,18,16,.2);pointer-events:none}
+@media(max-width:600px){.gt-mock{font-size:11.5px;padding:5px 11px}.gt-mock-x{display:none}}
+
+/* ---------------- Hub ---------------- */
+.gt-hub .exa-hero h1{max-width:14ch;text-wrap:balance}
+.gt-sub{font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(19px,2.2vw,24px);line-height:1.35;color:var(--ink);max-width:40ch;margin:24px auto 0;text-wrap:balance}
+.gt-hub .exa-hero .lede{margin-top:12px}
+.exa-meta>span{display:inline-flex;align-items:baseline}
+.gt-hub .exa-controls{justify-content:flex-start}
+.gt-day{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:8px}
+.gt-card .exa-read svg{width:15px;height:15px}
+
+/* The Gift of Giving card: the package asks for one wide dark card above the guides */
+.gt-gift{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(36px,5vw,56px);padding:clamp(30px,4.4vw,52px);border-radius:20px;background:var(--ink);color:var(--paper);text-decoration:none;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.gt-gift::before{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;background:rgba(245,130,31,.14);pointer-events:none}
+.gt-gift:hover{transform:translateY(-3px);box-shadow:0 22px 50px rgba(20,18,16,.22)}
+.gt-gift:focus-visible{outline:2.5px solid var(--nfs);outline-offset:4px}
+.gt-gift-txt{min-width:0;position:relative}
+.gt-gift-k{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.gt-gift .kicker{margin:0;color:var(--nfs)}
+.gt-gift h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-.015em;max-width:16ch;text-wrap:balance}
+.gt-gift h2 em{font-style:italic;color:var(--nfs)}
+.gt-gift p{margin-top:16px;max-width:52ch;font-size:clamp(16px,1.6vw,18px);line-height:1.6;color:#d8d0c4}
+.gt-gift-go{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+.gt-gift-go .btn{gap:10px;margin:0}
+.gt-gift-go .btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+.gt-gift:hover .gt-gift-go .btn svg{transform:translateX(4px)}
+.gt-gift-go small{font-size:12.5px;color:#b8afa2;font-style:italic}
+.gt-concept{display:inline-flex;align-items:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:30px;border:1px solid rgba(255,255,255,.3);color:#efe8dc}
+.gt-concept--light{border-color:var(--line);color:var(--muted);background:#fff}
+@media(max-width:760px){.gt-gift{grid-template-columns:minmax(0,1fr)}.gt-gift-go{align-items:flex-start}}
+
+/* ---------------- Guide ---------------- */
+.gt-figure{margin:0 0 var(--sec)}
+.gt-figure .ex-cover{margin-bottom:0;aspect-ratio:16/7}
+.gt-figure .ex-cover::after{content:none}
+.gt-figure .nfs-cover-img{object-position:50% 45%}
+.gt-cap{font-size:13px;font-style:italic;color:var(--muted);margin-top:10px}
+@media(max-width:600px){.gt-figure .ex-cover{aspect-ratio:3/2}}
+.ex-answer p+p{margin-top:14px}
+.ex-answer a{color:var(--nfs-d);text-decoration:underline;text-underline-offset:3px}
+.gt-act{margin-top:20px}
+.gt-act .btn{margin:0;text-decoration:none!important;color:#fff!important}
+.gt-note{font-size:14.5px!important;color:var(--muted)!important;font-style:italic}
+
+/* Contents rail (the story page's post-toc, in the explainer's label column) */
+.gt-body{padding-bottom:var(--sec)}
+.gt-rail{position:sticky;top:calc(var(--navh) + 24px);align-self:start;max-height:calc(100vh - var(--navh) - 48px);overflow-y:auto;overscroll-behavior:contain;padding-right:8px;scrollbar-width:thin}
+.gt-rail .post-toc{display:block}
+.gt .post-toc-nav a.on{color:var(--accent);border-left-color:var(--accent)}
+.gt-back{display:inline-block;margin-top:22px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
+.gt-back:hover{text-decoration:underline}
+.gt-toc-m{display:none}
+@media(max-width:860px){
+  .gt-rail{display:none}
+  .gt-toc-m{display:block;border:1px solid var(--line);border-radius:14px;background:#fff}
+}
+.gt-toc-m summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:12px 18px;min-height:52px;font-family:var(--disp);font-weight:700;font-size:17px;color:var(--ink)}
+.gt-toc-m summary::-webkit-details-marker{display:none}
+.gt-toc-m summary span{font-family:var(--body);font-weight:400;font-size:13px;color:var(--muted)}
+.gt-toc-m summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1;transition:transform .3s var(--ease)}
+.gt-toc-m[open] summary::after{transform:rotate(45deg)}
+.gt-toc-m nav{display:flex;flex-direction:column;padding:0 18px 6px;border-top:1px solid var(--line)}
+.gt-toc-m nav a{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4;color:var(--ink-2);text-decoration:none}
+.gt-toc-m nav a:last-child{border-bottom:0}
+
+/* Guide prose: the explainer's .prose, plus headings, lists, links and citations */
+.gt-prose{min-width:0}
+.gt-sec{scroll-margin-top:calc(var(--navh) + 24px)}
+.gt-sec+.gt-sec{margin-top:clamp(40px,5vw,60px)}
+.gt-prose h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,2.8vw,34px);line-height:1.12;letter-spacing:-.01em;color:var(--ink);margin:0 0 18px;text-wrap:balance}
+.gt-prose h3{font-family:var(--disp);font-weight:700;font-size:clamp(18px,2vw,21px);line-height:1.25;color:var(--ink);margin:26px 0 10px}
+.gt-prose strong{color:var(--ink);font-weight:600}
+.gt-prose a,.gt .qa .a a{color:var(--nfs-d);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.gt-prose a:hover{color:var(--ink)}
+.gt-prose ul,.gt-prose ol{margin:0 0 18px;padding-left:22px}
+.gt-prose li{font-size:clamp(16px,1.8vw,18.5px);line-height:1.7;color:var(--ink-2);margin:0 0 10px;padding-left:4px}
+.gt-prose li::marker{color:var(--accent)}
+.gt .cite{font-size:.66em;line-height:0;margin-left:2px;font-variant-numeric:tabular-nums}
+.gt .cite a{color:var(--accent);text-decoration:none;font-weight:600;padding:2px 1px}
+.gt .cite a:hover{text-decoration:underline}
+
+/* Tables: a card on wide screens, one card per row on phones */
+.gt-table{margin:6px 0 26px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow-x:auto}
+.gt-table:focus-visible{outline:2.5px solid var(--nfs);outline-offset:2px}
+.gt-table table{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.5}
+.gt-table th{background:var(--band);text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--muted);padding:13px 16px;vertical-align:bottom}
+.gt-table td{padding:14px 16px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+.gt-table td:first-child{font-weight:600;color:var(--ink)}
+.gt-table tbody tr{transition:background .2s var(--ease)}
+.gt-table tbody tr:hover{background:color-mix(in srgb,var(--accent) 5%,#fff)}
+@media(max-width:600px){
+  .gt-table{border:0;background:none;overflow:visible;border-radius:0}
+  .gt-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .gt-table table,.gt-table tbody,.gt-table tr,.gt-table td{display:block;width:100%}
+  .gt-table tr{border:1px solid var(--line);border-radius:14px;background:#fff;padding:4px 16px;margin-bottom:10px}
+  .gt-table tbody tr:hover{background:#fff}
+  .gt-table td{display:grid;grid-template-columns:minmax(0,38%) minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:15px}
+  .gt-table td::before{content:attr(data-label);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--muted);padding-top:3px;overflow-wrap:anywhere}
+  .gt-table td:first-child{display:block;border-top:0;font-family:var(--disp);font-weight:700;font-size:17px;padding-top:12px}
+  .gt-table td:first-child::before{content:none}
+}
+
+/* Sources: numbered by the package's source codes, so they match the citations */
+.gt-srclist{list-style:none;display:grid;gap:10px}
+.gt-srclist li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.5;color:var(--muted);scroll-margin-top:calc(var(--navh) + 24px);border-radius:8px;transition:background .3s var(--ease)}
+.gt-srclist li:target{background:color-mix(in srgb,var(--accent) 10%,var(--paper))}
+.gt-sn{font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent);font-size:13px;padding-top:2px}
+.gt-srclist a{color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;overflow-wrap:anywhere}
+.gt-srclist a:hover{color:var(--accent);text-decoration-color:currentColor}
+.gt-prep{margin-top:18px;font-size:13.5px;font-style:italic;color:var(--muted)}
+.gt-guide .ex-pager{margin-top:var(--sec)}
+.gt-guide .ex-keepgrid .ex-mc .nfs-cover{position:absolute;inset:0}
+
+/* ---------------- The Gift of Giving page ---------------- */
+.gt-giftpage .exa-hero h1{max-width:13ch;text-wrap:balance}
+.gt-steps{border-top:0;padding-top:clamp(28px,4vw,44px)}
+.gt-steps .grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1040px;margin-inline:auto}
+@media(max-width:760px){.gt-steps .grid{grid-template-columns:minmax(0,1fr)}}
+.gt-giftact{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.gt-giftact .btn{margin:0;padding:0 34px;min-height:54px;font-size:18px}
+.gt-giftact .gt-note{max-width:46ch}
