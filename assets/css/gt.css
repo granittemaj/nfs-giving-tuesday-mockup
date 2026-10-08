@@ -49,12 +49,27 @@
 @media(max-width:760px){.gt-gift{grid-template-columns:minmax(0,1fr)}.gt-gift-go{align-items:flex-start}}
 
 /* ---------------- Guide ---------------- */
-.gt-figure{margin:0 0 var(--sec)}
-.gt-figure .ex-cover{margin-bottom:0;aspect-ratio:16/7}
-.gt-figure .ex-cover::after{content:none}
-.gt-figure .nfs-cover-img{object-position:50% 45%}
-.gt-cap{font-size:13px;font-style:italic;color:var(--muted);margin-top:10px}
-@media(max-width:600px){.gt-figure .ex-cover{aspect-ratio:3/2}}
+/* Head: the news story page's (.posthead): category tag, title, italic summary, byline, cover */
+.gt .posthead .tag.cat{display:inline-flex;text-decoration:none;margin-bottom:18px}
+.gt .posthead .tag.cat:hover{color:var(--ink)}
+.gt .posthead h1{text-wrap:balance}
+.gt-av{background:#fff;display:grid;place-items:center}
+.gt-av img{width:27px;height:27px;object-fit:contain}
+/* byline dates and the preferred-source pill, as nfs-core prints them on story pages */
+.posthead .byline .byl{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;line-height:1.35;min-width:0}
+.posthead .byline .byl-who{font-size:15px;color:var(--muted)}
+.posthead .byline .byl-dates{display:flex;flex-wrap:wrap;align-items:center;gap:2px 0;font-size:13.5px;color:var(--muted)}
+.posthead .byline .byl-dates time{color:var(--ink-2);font-weight:500}
+.posthead .byline .byl-upd::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--line);margin:0 10px 2px;vertical-align:middle}
+.posthead .byline .byl-upd time{color:var(--ink)}
+.posthead .byline .byl-dates span{white-space:nowrap}
+@media(max-width:760px){.posthead .byline .byl-dates{flex-direction:column;align-items:flex-start;gap:2px}.posthead .byline .byl-upd::before{display:none}}
+.gps{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:#fff;border-radius:40px;padding:8px 15px;font-size:13.5px;line-height:1.3;color:var(--ink-2);white-space:nowrap;text-decoration:none;transition:transform .2s var(--ease),border-color .2s,box-shadow .2s,color .2s}
+.gps:hover{border-color:#c9beab;color:var(--ink);box-shadow:0 8px 18px -12px rgba(20,18,16,.4);transform:translateY(-1px)}
+.gps svg{width:17px;height:17px;flex:0 0 auto}
+.gt-cover{margin:0}
+.gt-cover .postcover{margin-bottom:0}
+.gt-cap{font-size:13px;font-style:italic;color:var(--muted);text-align:center;margin:10px 0 clamp(28px,4vw,40px)}
 .ex-answer p+p{margin-top:14px}
 .ex-answer a{color:var(--nfs-d);text-decoration:underline;text-underline-offset:3px}
 .gt-act{margin-top:20px}
