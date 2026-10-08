@@ -59,6 +59,20 @@ if(rail&&links.length){
   };
   window.addEventListener('scroll',perFrame(pick),{passive:true});pick();
 }
+// Share row (the story page's): links built from this page's address; Copy link copies it
+var here=location.origin+location.pathname, title=document.title;
+document.querySelectorAll('[data-share]').forEach(function(a){
+  var k=a.getAttribute('data-share'), u=encodeURIComponent(here);
+  a.href=k==='x'?'https://twitter.com/intent/tweet?url='+u+'&text='+encodeURIComponent(title)
+        :k==='li'?'https://www.linkedin.com/sharing/share-offsite/?url='+u
+        :'https://www.facebook.com/sharer/sharer.php?u='+u;
+});
+var copyBtn=document.querySelector('.gt .pshcopy');
+if(copyBtn){copyBtn.addEventListener('click',function(){
+  var done=function(){copyBtn.classList.add('copied');copyBtn.setAttribute('aria-label','Copied');setTimeout(function(){copyBtn.classList.remove('copied');copyBtn.setAttribute('aria-label','Copy link');},1400);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(here).then(done).catch(function(){});}
+});}
+
 // The phone contents list closes once a section is chosen
 document.querySelectorAll('.gt-toc-m a').forEach(function(a){a.addEventListener('click',function(){var d=a.closest('details');if(d)d.open=false;});});
 
