@@ -76,17 +76,18 @@
 .gt-act .btn{margin:0;text-decoration:none!important;color:#fff!important}
 .gt-note{font-size:14.5px!important;color:var(--muted)!important;font-style:italic}
 
-/* Guide body: the story page's layout (.postlayout): article left, contents and share on the right.
-   Aligned to the page edges like the answer box above, with the article kept to a reading width. */
+/* Guide body: the story page's layout as it is (.postlayout: 1080px, article left, a 248px column
+   with contents and share on the right). */
+/* The answer box is as wide as the story cover and body (1080px), its text running full width */
+.gt .ex-answer{max-width:1080px;margin-inline:auto}
 .gt .ex-answer p{max-width:none}
-.gt .postlayout{max-width:none;grid-template-columns:minmax(0,760px) minmax(240px,280px);justify-content:space-between;padding-bottom:var(--sec)}
+.gt .postlayout{padding-bottom:var(--sec)}
 .gt-rail{max-height:calc(100vh - var(--navh) - 48px);overflow-y:auto;overscroll-behavior:contain;padding-right:8px;scrollbar-width:thin}
 .gt .post-toc-nav a.on{color:var(--accent);border-left-color:var(--accent)}
 .gt-back{display:inline-block;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
 .gt-back:hover{text-decoration:underline}
 .gt-toc-m{display:none}
 @media(max-width:900px){
-  .gt .postlayout{grid-template-columns:minmax(0,1fr)}
   .gt-rail{max-height:none;overflow:visible;padding-right:0}
   .gt-toc-m{display:block;border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:28px}
   .gt-back{display:none}
