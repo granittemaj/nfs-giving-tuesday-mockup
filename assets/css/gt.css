@@ -21,6 +21,9 @@
 .gt-hub .pagehead h1{max-width:15ch;text-wrap:balance}
 .gt-sub{font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(19px,2.2vw,24px);line-height:1.35;color:var(--ink);max-width:40ch;margin-top:22px;text-wrap:balance}
 .gt-hub .pagehead .lede{margin-top:12px}
+/* the intro runs two thirds of the hero (design feedback) */
+.gt-hub .pagehead .gt-sub,.gt-hub .pagehead .lede{max-width:66.666%}
+@media(max-width:860px){.gt-hub .pagehead .gt-sub,.gt-hub .pagehead .lede{max-width:none}}
 .gt-hub .pagehead .exa-meta{justify-content:flex-start}
 @media(max-width:600px){.gt-hub .pagehead .exa-meta{gap:6px 18px}.gt-hub .pagehead .exa-meta .d{display:none}}
 .exa-meta>span{display:inline-flex;align-items:baseline}
@@ -29,24 +32,21 @@
 .gt-card .exa-read svg{width:15px;height:15px}
 
 /* The Gift of Giving card: the package asks for one wide dark card above the guides */
-.gt-gift{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(36px,5vw,56px);padding:clamp(30px,4.4vw,52px);border-radius:20px;background:var(--ink);color:var(--paper);text-decoration:none;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.gt-gift{display:flex;flex-direction:column;gap:22px;margin-top:clamp(36px,5cqi,56px);padding:clamp(30px,4.4cqi,52px);border-radius:20px;background:var(--ink);color:var(--paper);text-decoration:none;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .gt-gift::before{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;background:rgba(245,130,31,.14);pointer-events:none}
 .gt-gift:hover{transform:translateY(-3px);box-shadow:0 22px 50px rgba(20,18,16,.22)}
 .gt-gift:focus-visible{outline:2.5px solid var(--nfs);outline-offset:4px}
 .gt-gift-txt{min-width:0;position:relative}
 .gt-gift-k{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .gt-gift .kicker{margin:0;color:var(--nfs)}
-.gt-gift h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-.015em;max-width:16ch;text-wrap:balance}
+.gt-gift h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.2cqi,52px);line-height:1.02;letter-spacing:-.015em;text-wrap:balance}
 .gt-gift h2 em{font-style:italic;color:var(--nfs)}
-.gt-gift p{margin-top:16px;max-width:52ch;font-size:clamp(16px,1.6vw,18px);line-height:1.6;color:#d8d0c4}
-.gt-gift-go{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
-.gt-gift-go .btn{gap:10px;margin:0}
-.gt-gift-go .btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
-.gt-gift:hover .gt-gift-go .btn svg{transform:translateX(4px)}
+.gt-gift p{margin-top:14px;font-size:clamp(16px,1.6cqi,18px);line-height:1.6;color:#d8d0c4}
+.gt-gift-go{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;position:relative}
+.gt-gift-go .btn{margin:0}
 .gt-gift-go small{font-size:12.5px;color:#b8afa2;font-style:italic}
 .gt-concept{display:inline-flex;align-items:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:30px;border:1px solid rgba(255,255,255,.3);color:#efe8dc}
 .gt-concept--light{border-color:var(--line);color:var(--muted);background:#fff}
-@media(max-width:760px){.gt-gift{grid-template-columns:minmax(0,1fr)}.gt-gift-go{align-items:flex-start}}
 
 /* ---------------- Guide ---------------- */
 /* Head: the news story page's (.posthead): category tag, title, italic summary, byline, cover */
@@ -163,3 +163,10 @@
 #gtDonate .nfs-modal{max-width:500px}
 #gtDonate .kicker{margin-bottom:14px}
 #gtDonate .btn{margin-top:4px}
+
+/* Orange band on these pages: "Help us prove it." on its own line, buttons without an outline and
+   a black hover (orange on orange disappeared) */
+.gt .ctaband h2{max-width:none}
+.gt .ctaband .btn-light{border:0}
+.gt .ctaband .btn-light:hover,.gt .ctaband .btn-light:focus-visible{background:var(--ink);color:#fff;transform:translateY(-2px)}
+
